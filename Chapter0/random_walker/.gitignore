@@ -1,4 +1,3 @@
-./resources
-./release
-./debug
+release/
+debug/
 *.pdb

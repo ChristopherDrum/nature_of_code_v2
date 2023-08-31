@@ -10,24 +10,32 @@ typedef struct {
 } Walker;
 
 Walker crowd[CROWD_SIZE];
+Vector2 realMouse;
+Vector2 virtualMouse;
 
 void step(Walker *w)
 {
-	int ran = GetRandomValue(0, 3);
+	int ran = GetRandomValue(1,8);
 	switch (ran)
 	{
-	case 0:
+	case 1:
 		(*w).x++;
 		break;
-	case 1:
+	case 2:
 		(*w).x--;
 		break;
-	case 2:
+	case 3:
 		(*w).y++;
 		break;
-	case 3:
+	case 4:
 		(*w).y--;
 		break;
+	default:
+		//steer toward mouse
+		if (w->x < virtualMouse.x) w->x++;
+		if (w->x > virtualMouse.x) w->x--;
+		if (w->y < virtualMouse.y) w->y++;
+		if (w->y > virtualMouse.y) w->y--;
 	}
 }
 
@@ -50,8 +58,15 @@ int main()
 	const int virtualWidth = 200;
 	const int virtualHeight = 150;
 
+	//remember: casting is super important, even if the receiving
+	//variable is a float, if the division was by two ints you'll get an int
+	//I think this is called "type promotion" to force the system to do
+	//math in specific precisions
+	const float widthRatio = (float)virtualWidth/screenWidth;
+	const float heightRatio = (float)virtualHeight/screenHeight;
+
     InitWindow(screenWidth, screenHeight,
-		"Nature of Code, Chapter 0, Random Walker");
+		"Nature of Code, Ch 0, Ex 1.3: Walker Tends Toward Mouse");
 
     SetTargetFPS(60);
 
@@ -78,6 +93,9 @@ int main()
     // Main game loop
     while (!WindowShouldClose())    // Detect window close button or ESC key
     {
+
+		realMouse = GetMousePosition();
+		virtualMouse = (Vector2){(float)realMouse.x*widthRatio, (float)realMouse.y*heightRatio};
 
 		//Raylib really wants a per-frame redraw of everything
 		//But we want persistence from frame to frame for the random walker

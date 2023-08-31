@@ -53,7 +53,7 @@ int main()
     InitWindow(screenWidth, screenHeight,
 		"Nature of Code, Chapter 0, Random Walker");
 
-    SetTargetFPS(60);
+    SetvirtualScreenFPS(60);
 
 	//Coordinates and sizes and such need to be in virtual screen pixels
 	//however, high-res things like text could be appended *after*
@@ -65,13 +65,13 @@ int main()
 	//This becomes the "real" canvas we draw to.
 	//Normally, ClearBackground is called every frame, but for this project
 	//we want to append to the composite image every frame
-	//So we can set up our target texture canvas with its base background color
+	//So we can set up our virtualScreen texture canvas with its base bg color
 	//just once and draw into that, then blit that to screen in the normal
 	//BeginDrawing()/EndDrawing() phase without (necessarily) needing to clear every frame; though we could if we wanted to, I think
+	RenderTexture2D virtualScreen = LoadRenderTexture(virtualWidth, virtualHeight);
 
 	//This is all to avoid a weird flickering/checkerboard pixel pattern that appears when we circumvent Raylib's normal "draw everything fresh every frame" draw cycle. This differs somewhat from Pico-8 and its image persistence and flip() concept.
-	RenderTexture2D target = LoadRenderTexture(virtualWidth, virtualHeight);
-	BeginTextureMode(target);
+	BeginTextureMode(virtualScreen);
 	ClearBackground(DARKGRAY);
 	EndTextureMode();
 
@@ -84,21 +84,19 @@ int main()
 		//The solution is to draw to a texture and blit that texture every frame
 		//This satisfies our persistence needs
 		//and keeps Raylib happy with something "new" to blit every frame.
-		//So, for us, the target texture is the "real" canvas
-		BeginTextureMode(target);
+		//So, for us, the virtualScreen texture is the "real" canvas
+		BeginTextureMode(virtualScreen);
 			for (size_t i = 0; i < CROWD_SIZE; i++)
 			{
 				step(&crowd[i]);
 				draw(&crowd[i]);
 			}
-			DrawCircle(20,120,10,BLUE);
 		EndTextureMode();
 
 		
 		BeginDrawing();
-			//the target.texture has y coordinates flipped due to OpenGL; we re-flip them when drawing to screen.
-			// DrawTextureRec(target.texture, (Rectangle){0,0,target.texture.width, -target.texture.height}, (Vector2){0,0}, WHITE);
-			DrawTexturePro(target.texture, (Rectangle){0,0,virtualWidth, -virtualHeight}, (Rectangle){0,0,screenWidth, screenHeight}, (Vector2){0,0}, 0.0f, WHITE);
+			//the virtualScreen.texture has y coordinates flipped due to OpenGL; we re-flip them when drawing to screen.
+			DrawTexturePro(virtualScreen.texture, (Rectangle){0,0,virtualWidth, -virtualHeight}, (Rectangle){0,0,screenWidth, screenHeight}, (Vector2){0,0}, 0.0f, WHITE);
 		EndDrawing();
     }
 

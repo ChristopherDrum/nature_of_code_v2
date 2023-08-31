@@ -14,7 +14,7 @@ int main()
 	const int screenHeight = 600;
 
 	InitWindow(screenWidth, screenHeight,
-		"Nature of Code, Chapter 0, Random Walker");
+		"Nature of Code, Chapter 0, Random Distribution Visualization");
 
 	SetTargetFPS(60);
 

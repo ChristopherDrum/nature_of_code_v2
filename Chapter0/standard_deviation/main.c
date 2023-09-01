@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <math.h>
 
+//Using X Macros to generate boilerplate functions
 #define MEAN_FUNCTIONS\
 	MEAN_GEN(int)\
 	MEAN_GEN(float)

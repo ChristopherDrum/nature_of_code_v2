@@ -1,5 +1,5 @@
-#The Goal of "Gaussian"
-To replicate the following p5.js code
+# The Goal of "Gaussian"
+To replicate the following p5.js code ([runnable here](https://editor.p5js.org/))
 ```
 function setup() {
   createCanvas(400, 400);
@@ -26,4 +26,7 @@ function draw() {
   describe('Three horizontal black lines are filled in randomly. The top line spans entire canvas. The middle line is very short. The bottom line spans two-thirds of the canvas.');
 }
 ```
+
 and generate the resultant image
+
+![image](https://github.com/ChristopherDrum/nature_of_code_v2/assets/320377/fc4bebe2-79f6-4345-b09a-6ce6efe02f01)

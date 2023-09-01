@@ -31,7 +31,7 @@ void step(Walker *w)
 		(*w).y--;
 		break;
 	default:
-		//steer toward mouse
+		//steer toward mouse; probably vector math would be better here
 		if (w->x < virtualMouse.x) w->x++;
 		if (w->x > virtualMouse.x) w->x--;
 		if (w->y < virtualMouse.y) w->y++;

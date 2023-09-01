@@ -1,17 +1,6 @@
 {
 	"files.associations": {
-		"assert.h": "c",
-		"curl.h": "c",
-		"stdio.h": "c",
-		"math.h": "c",
-		"complex.h": "c",
-		"stdint.h": "c",
-		"raymath.h": "c",
-		"random": "c",
-		"chrono": "c",
-		"limits": "c",
-		"algorithm": "c",
-		"typeinfo": "c"
+		"*.m": "c"
 	},
 	"C_Cpp.errorSquiggles": "disabled"
 }

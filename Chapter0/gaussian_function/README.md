@@ -30,3 +30,8 @@ function draw() {
 and generate the resultant image
 
 ![image](https://github.com/ChristopherDrum/nature_of_code_v2/assets/320377/fc4bebe2-79f6-4345-b09a-6ce6efe02f01)
+
+## Success
+Using the function developed in this mini-project, which was then brought into the general "processing.h" file for use in "gaussian_visualization" I was able to generate this image in Raylib
+
+![image](https://github.com/ChristopherDrum/nature_of_code_v2/assets/320377/57ed2e8f-f081-4278-9cf7-8fbfbcc1c28e)

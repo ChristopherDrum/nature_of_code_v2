@@ -40,7 +40,7 @@ int main(void)
 	{
 		printf("Grade: %3d\tVariance: %.2f\n", grades[i], squaredDevs[i]);
 	}
-	printf("Standard Deviation: %.2f", standardDeviation);
+	printf("Mean: %.2f\tStandard Deviation: %.2f", mean, standardDeviation);
 
 	return(0);
 }

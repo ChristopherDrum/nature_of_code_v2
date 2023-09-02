@@ -1,6 +1,24 @@
 {
 	"files.associations": {
-		"*.m": "c"
+		"*.m": "c",
+		"random": "c",
+		"float.h": "c",
+		"*.tcc": "c",
+		"charconv": "c",
+		"chrono": "c",
+		"ctime": "c",
+		"format": "c",
+		"iomanip": "c",
+		"limits": "c",
+		"numeric": "c",
+		"ratio": "c",
+		"shared_mutex": "c",
+		"streambuf": "c",
+		"tuple": "c",
+		"type_traits": "c",
+		"*.inc": "c",
+		"*.def": "c",
+		"algorithm": "c"
 	},
 	"C_Cpp.errorSquiggles": "disabled"
 }

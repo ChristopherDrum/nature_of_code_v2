@@ -1,3 +1,4 @@
+//This is intended to be a single-file include to add the "missing" Processing functions to a Raylib project
 #include <stdio.h>
 #include <stdlib.h>
 #include <float.h>

@@ -15,7 +15,7 @@ int main()
 	const int virtualHeight = 400;
 
     InitWindow(screenWidth, screenHeight,
-		"Nature of Code, Chapter 0, Gaussian Distribution");
+		"Nature of Code, Ch.0 Ex.4, Gaussian Distribution");
 
     SetTargetFPS(60);
 

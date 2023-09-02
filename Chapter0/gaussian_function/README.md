@@ -35,3 +35,5 @@ and generate the resultant image
 Using the function developed in this mini-project, which was then brought into the general "processing.h" file for use in "gaussian_visualization" I was able to generate this image in Raylib
 
 ![image](https://github.com/ChristopherDrum/nature_of_code_v2/assets/320377/57ed2e8f-f081-4278-9cf7-8fbfbcc1c28e)
+
+This shows proper distribution, AFAIK. Rendering differences can't be helped (Raylib looks a little overly sharp to my eyes) at this time. Perhaps there is some softer anti-aliasing rendering we can apply?

@@ -59,13 +59,12 @@ void Test3()
 			float nt = noiseScale * (float)frameCount;
 			float n = noise(nx, ny, nt);
 			int c = (int)(n * 255.0f);
-			if (c < 0) c = 0;
-			if (c > 255) c = 255;
+
 			DrawPixel(x, y, (Color){255,255,255,c});
-			// below is used to trap when noise() returns odd values
+			//below is used to trap when noise() returns odd values
 			// if (c < 0 || c > 255) {
 			// 	pause = true;
-			// 	printf("%f, %f, %f => %f => %d", nx, ny, nt, n, c);
+			// 	printf("%f, %f, %f => %f => %d\n", nx, ny, nt, n, c);
 			// 	return;
 			// }
 		}
@@ -76,7 +75,7 @@ void Test3()
 int main() 
 {
     // Initialization
-    //--------------------------------------------------------------------------
+    //----------------------------------------------------------------
 
 
     InitWindow(screenWidth, screenHeight,

@@ -62,6 +62,7 @@ void Test3()
 			if (c < 0) c = 0;
 			if (c > 255) c = 255;
 			DrawPixel(x, y, (Color){255,255,255,c});
+			// below is used to trap when noise() returns odd values
 			// if (c < 0 || c > 255) {
 			// 	pause = true;
 			// 	printf("%f, %f, %f => %f => %d", nx, ny, nt, n, c);

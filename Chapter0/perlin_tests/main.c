@@ -14,7 +14,6 @@ const int virtualWidth = 300;
 const int virtualHeight = 300;
 
 bool pause = false;
-bool dump = false;
 
 
 // A black dot moves randomly on a gray square
@@ -91,20 +90,14 @@ int main()
     {
 		frameCount++;
 
+		// for debugging purposes
 		if (GetCharPressed() == 'p') pause = !pause;
-		if (GetCharPressed() == 'd') dump = pause ? true : false;
 
 		if (!pause)
 		{
 			BeginTextureMode(virtualScreen);
 				Test3();
 			EndTextureMode();
-		} else {
-			if (dump)
-			{
-
-				dump = false;
-			}
 		}
 
 		BeginDrawing();

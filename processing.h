@@ -5,6 +5,7 @@
 #include <stdbool.h>
 #include <time.h>
 #include <math.h>
+#include <external/stb_perlin.h>
 
 float randf(float limit)
 {
@@ -41,4 +42,11 @@ float randomGaussian(float mean, float sd)
 		y2Precalculated = true;
 	}
 	return y1 * sd + mean;
+}
+
+//Uses "rational" default values and returns float from [0,1]
+//Pass 0 for y and/or z when in doubt
+float noise(float x, float y, float z)
+{
+	return ((stb_perlin_fbm_noise3(x, y, z, 2.0f, 0.5f, 4) + 1.0f)/2.0f);	
 }

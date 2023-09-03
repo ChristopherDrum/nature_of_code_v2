@@ -24,7 +24,7 @@ xcopy "..\resources" ".\resources" /e/h/c/i/y
 @REM I think this gets the raylib.dll in place to override the Windows functions of the same names (PlaySound() in particular was my trouble)
 set CFLAGS=-Wall -std=c99 -v -fuse-ld=lld
 
-set INCLUDE=-ID:\_Development\_Libraries\raylib\include -IC:\msys64\mingw64\include
+set INCLUDE=-ID:\_Development\_Libraries\raylib\include -IC:\msys64\mingw64\include -ID:\_Development\raylib\raylib\src
 
 set LIB=-L.\ -LD:\_Development\_Libraries\raylib\lib
 

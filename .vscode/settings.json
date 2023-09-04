@@ -19,7 +19,9 @@
 		"*.inc": "c",
 		"*.def": "c",
 		"algorithm": "c",
-		"stb_perlin.h": "c"
+		"stb_perlin.h": "c",
+		"stdlib.h": "c",
+		"stdbool.h": "c"
 	},
 	"C_Cpp.errorSquiggles": "disabled"
 }

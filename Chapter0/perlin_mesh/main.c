@@ -39,11 +39,8 @@ int main()
 	Model perlinModel = LoadModelFromMesh(perlinMesh);
 	perlinModel.materials[0].maps[MATERIAL_MAP_DIFFUSE].texture = perlinTexture;
 
-	Image waterImage = GenImageColor(100,100,BLACK);
-	Texture2D waterTexture = LoadTextureFromImage(waterImage);
-	Mesh waterMesh = GenMeshPlane(20, 20, 10, 10);
+	Mesh waterMesh = GenMeshPlane(20, 20, 20, 20);
 	Model waterModel = LoadModelFromMesh(waterMesh);
-	waterModel.materials[0].maps[MATERIAL_MAP_ROUGHNESS].texture = waterTexture;
 
     // Main game loop
     while (!WindowShouldClose())    // Detect window close button or ESC key

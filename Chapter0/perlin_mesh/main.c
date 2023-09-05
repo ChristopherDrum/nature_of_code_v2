@@ -39,8 +39,9 @@ int main()
 	Model perlinModel = LoadModelFromMesh(perlinMesh);
 	perlinModel.materials[0].maps[MATERIAL_MAP_DIFFUSE].texture = perlinTexture;
 
-	Mesh waterMesh = GenMeshPlane(20, 20, 20, 20);
+	Mesh waterMesh = GenMeshHeightmap(perlinImage, (Vector3){16,2,16});
 	Model waterModel = LoadModelFromMesh(waterMesh);
+	waterModel.materials[0].maps[MATERIAL_MAP_DIFFUSE].texture = perlinTexture;
 
     // Main game loop
     while (!WindowShouldClose())    // Detect window close button or ESC key
@@ -52,7 +53,7 @@ int main()
 			ClearBackground(SKYBLUE);
 			BeginMode3D(camera);
 				DrawModel(perlinModel, (Vector3){-8,-4,-8}, 1.0, LIGHTGRAY);
-				DrawModel(waterModel, (Vector3){0,0,0}, 1.0, BLUE);
+				DrawModel(waterModel, (Vector3){-8,-1,-8}, 1.0, SKYBLUE);
 				// DrawGrid(20,1.0f);
 			EndMode3D();
 		EndTextureMode();
@@ -62,6 +63,7 @@ int main()
 			//the virtualScreen.texture has y coordinates flipped due to OpenGL; we re-flip them when drawing to screen.
 			DrawTexturePro(virtualScreen.texture, (Rectangle){0,0,virtualWidth, -virtualHeight}, (Rectangle){0,0,screenWidth, screenHeight}, (Vector2){0,0}, 0.0f, WHITE);
 		EndDrawing();
+
     }
 
 	

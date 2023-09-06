@@ -5,8 +5,8 @@
 //Coordinates and sizes and such need to be in virtual screen pixels
 //however, high-res things like text could be appended *after*
 //the low-rez render texture is blitted to screen.
-const int virtualWidth = 600;
-const int virtualHeight = 400;
+const int virtualWidth = 400;
+const int virtualHeight = 300;
 const int resolutionScale = 2;
 
 const int screenWidth = virtualWidth * resolutionScale;
@@ -31,9 +31,10 @@ int main()
 	//BeginDrawing()/EndDrawing() phase without (necessarily) needing to clear 
 	RenderTexture2D virtualScreen = LoadRenderTexture(virtualWidth, virtualHeight);
 
-	BeginTextureMode(virtualScreen);
-	ClearBackground(DARKGRAY);
-	EndTextureMode();
+	float x = 100.0f;
+	float y = 100.0f;
+	float xSpeed = 2.5f;
+	float ySpeed = 2.0f;
 
     // Main game loop
     while (!WindowShouldClose())    // Detect window close button or ESC key
@@ -42,6 +43,18 @@ int main()
 		//For low-res drawing, virtualScreen.texture is the "real" canvas
 		BeginTextureMode(virtualScreen);
 			/* Stick your virtual resolution drawing stuff in here*/
+			ClearBackground(DARKGRAY);
+			x += xSpeed;
+			y += ySpeed;
+			if (x > virtualWidth || x < 0)
+			{
+				xSpeed *= -1;
+			}
+			if (y > virtualHeight || y < 0)
+			{
+				ySpeed *= -1;
+			}
+			DrawCircle(x, y, 10, RED);
 		EndTextureMode();
 
 		

@@ -20,9 +20,9 @@ xcopy "..\resources" ".\resources" /e/h/c/i/y
 @REM compiler flags and library search paths
 set CFLAGS=-v -g -gcodeview -fuse-ld=lld -Wl,--pdb=
 
-set INCLUDE=-ID:\_Development\_Libraries\raylib\include -IC:\msys64\mingw64\include -ID:\_Development\raylib\raylib\src
+set INCLUDE=-ID:\_Development\_Libraries\raylib\include -IC:\msys64\clang64\include -IC:\msys64\usr\include -ID:\_Development\raylib\raylib\src
 
-set LIB=-L.\ -LD:\_Development\_Libraries\raylib\lib
+set LIB=-L.\ -LC:\msys64\clang64\lib -LD:\_Development\_Libraries\raylib\lib -LD:\msys64\usr\lib
 
 set LINK=-lOpenGL32 -lGdi32 -lWinMM -lraylib
 

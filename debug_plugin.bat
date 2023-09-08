@@ -7,7 +7,7 @@
 
 set CFLAGS=-Wall -std=c99 -v -shared -fPIC -g -gcodeview -fuse-ld=lld -Wl,--pdb=
 
-set INCLUDE=-ID:\_Development\_Libraries\raylib\include -IC:\msys64\mingw64\include
+set INCLUDE=-ID:\_Development\_Libraries\raylib\include -IC:\msys64\clang64\include -IC:\msys64\usr\include -ID:\_Development\raylib\raylib\src
 
 set LIB=-L.\
 

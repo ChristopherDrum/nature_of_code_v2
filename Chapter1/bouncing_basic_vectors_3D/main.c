@@ -14,7 +14,7 @@ const int screenWidth = virtualWidth * resolutionScale;
 const int screenHeight = virtualHeight * resolutionScale;
 
 
-int main() 
+int main(void) 
 {
 	// Initialization
     //----------------------------------------------------------------

@@ -16,7 +16,7 @@ const int screenHeight = virtualHeight * resolutionScale;
 
 int main() 
 {
-    // Initialization
+	// Initialization
     //----------------------------------------------------------------
 
     InitWindow(screenWidth, screenHeight,

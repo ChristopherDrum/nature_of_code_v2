@@ -12,7 +12,6 @@ const int virtualHeight = 224;
 // const int virtualWidth = screenWidth;
 // const int virtualHeight = screenHeight;
 
-
 int main() 
 {
     // Initialization

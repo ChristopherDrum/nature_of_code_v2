@@ -1,4 +1,6 @@
 //This is intended to be a single-file include to add the "missing" Processing functions to a Raylib project
+#include "raylib.h"
+#include "raymath.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <float.h>
@@ -57,4 +59,21 @@ float noise(float x, float y, float z)
 	float n = stb_perlin_fbm_noise3(x, y, z, 2.0f, 0.5f, 4);
 	n = _clamp(n, -1.0, 1.0);
 	return (n + 1.0f)/2.0f;	
+}
+
+float heading2D(Vector2 *vec)
+{
+	return atan2f(vec->y, vec->x);
+}
+
+void mult2D(Vector2 *vec, float n)
+{
+	vec->x *= n;
+	vec->y *= n;
+}
+
+void setMag2D(Vector2 *vec, float len)
+{
+	*vec = Vector2Normalize(*vec);
+	mult2D(vec, len);
 }

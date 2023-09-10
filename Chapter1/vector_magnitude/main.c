@@ -6,22 +6,16 @@
 //Coordinates and sizes and such need to be in virtual screen pixels
 //however, high-res things like text could be appended *after*
 //the low-rez render texture is blitted to screen.
-const int virtualWidth = 400;
-const int virtualHeight = 300;
-const int resolutionScale = 2;
+const int virtualWidth = 600;
+const int virtualHeight = 400;
+const float resolutionScale = 2.0;
 
-const int screenWidth = virtualWidth * resolutionScale;
-const int screenHeight = virtualHeight * resolutionScale;
+const float screenWidth = virtualWidth * resolutionScale;
+const float screenHeight = virtualHeight * resolutionScale;
 
 const float widthRatio = (float)virtualWidth/screenWidth;
 const float heightRatio = (float)virtualHeight/screenHeight;
 
-// Vector2 virtualMousePosition()
-// {
-// 	Vector2 realMouse = GetMousePosition();
-// 	Vector2 virtualMouse = (Vector2){(float)realMouse.x*widthRatio, (float)realMouse.y*heightRatio};
-// 	virtualMouse = Vector2Clamp(virtualMouse, (Vector2){0,0}, (Vector2){virtualWidth, virtualHeight});
-// }
 
 int main(void) 
 {
@@ -29,7 +23,7 @@ int main(void)
     //----------------------------------------------------------------
 
     InitWindow(screenWidth, screenHeight,
-		"Nature of Code, Ch.1 Ex.3, Mouse Vector Subtraction");
+		"Nature of Code, Ch.1 Ex.5, Mouse Vector Magnitude");
 
     SetTargetFPS(60);
 
@@ -53,12 +47,15 @@ int main(void)
 		//For low-res drawing, virtualScreen.texture is the "real" canvas
 		BeginTextureMode(virtualScreen);
 			ClearBackground(WHITE);
-			DrawLineEx(Vector2Zero(), mouse, 3, LIGHTGRAY);
-			DrawLineEx(Vector2Zero(), center, 3, LIGHTGRAY);
+			DrawLineEx(center, mouse, 3, LIGHTGRAY);
 			mouse = Vector2Subtract(mouse, center);
-			Matrix translation = MatrixTranslate(center.x, center.y, 0);
-			mouse = Vector2Transform(mouse, translation);
-			DrawLineEx(mouse, center, 6, RED);
+			float mag = Vector2Length(mouse);
+			int xOffset = 10.0f + mag;
+			DrawLineEx((Vector2){10,10}, (Vector2){xOffset, 10}, 6, RED);
+			DrawLine(xOffset, 10, xOffset, 18, RED);
+			int textWidth = MeasureText(TextFormat("%.2f", mag), 4);
+			DrawRectangle(mag-((float)textWidth/2)-3+10, 17, textWidth+6, 11, RED);
+			DrawText(TextFormat("%.2f", mag), mag-((float)textWidth/2)+10 , 18, 4, WHITE);
 		EndTextureMode();
 
 		

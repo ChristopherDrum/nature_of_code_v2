@@ -29,7 +29,7 @@ int main(void)
     //----------------------------------------------------------------
 
     InitWindow(screenWidth, screenHeight,
-		"Nature of Code, Ch.1 Ex.3, Mouse Vector Subtraction");
+		"Nature of Code, Ch.1 Ex.4, Mouse Vector Multiplication");
 
     SetTargetFPS(60);
 
@@ -53,12 +53,13 @@ int main(void)
 		//For low-res drawing, virtualScreen.texture is the "real" canvas
 		BeginTextureMode(virtualScreen);
 			ClearBackground(WHITE);
-			DrawLineEx(Vector2Zero(), mouse, 3, LIGHTGRAY);
-			DrawLineEx(Vector2Zero(), center, 3, LIGHTGRAY);
+			DrawLineEx(center, mouse, 3, LIGHTGRAY);
 			mouse = Vector2Subtract(mouse, center);
-			Matrix translation = MatrixTranslate(center.x, center.y, 0);
-			mouse = Vector2Transform(mouse, translation);
-			DrawLineEx(mouse, center, 6, RED);
+			mouse = Vector2Scale(mouse, 0.5f);
+			// Matrix translation = MatrixTranslate(center.x, center.y, 0);
+			// mouse = Vector2Transform(mouse, translation);
+			mouse = Vector2Add(center, mouse);
+			DrawLineEx(center, mouse, 6, RED);
 		EndTextureMode();
 
 		

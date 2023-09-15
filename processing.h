@@ -1,4 +1,4 @@
-//This is intended to be a single-file include to add the "missing" Processing functions to a Raylib project
+//This is intended to add "missing" Processing functions to a Raylib project
 #include "raylib.h"
 #include "raymath.h"
 #include <stdio.h>

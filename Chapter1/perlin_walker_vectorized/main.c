@@ -16,11 +16,11 @@ typedef struct {
 	Vector2 previous;
 	Vector2 timeStep;
 	Color c;
-} Walker;
+} Mover;
 
-Walker crowd[CROWD_SIZE];
+Mover crowd[CROWD_SIZE];
 
-void step(Walker *w)
+void step(Mover *w)
 {
 	float nx = noise(w->timeStep.x, 0, 0);
 	float ny = noise(w->timeStep.y, 0, 0);
@@ -31,13 +31,13 @@ void step(Walker *w)
 	w->timeStep.y += 0.05;
 }
 
-void draw(Walker *w)
+void draw(Mover *w)
 {
 	DrawLineBezier(w->previous, w->position, 2, w->c);
 	w->previous = w->position;
 }
 
-int main() 
+int main(void) 
 {
     // Initialization
     //----------------------------------------------------------------
@@ -50,9 +50,9 @@ int main()
 	//Coordinates and sizes and such need to be in virtual screen pixels
 	//however, high-res things like text could be appended *after*
 	//the low-rez render texture is blitted to screen.
-	crowd[0] = (Walker){{25,25},{25,25},{0.0,2000.0},ORANGE};
-	crowd[1] = (Walker){{100,75},{100,75},{1000.0,6000.0},GREEN};
-	crowd[2] = (Walker){{175,125},{175,125},{5000.0,10000.0},YELLOW};
+	crowd[0] = (Mover){{25,25},{25,25},{0.0,2000.0},ORANGE};
+	crowd[1] = (Mover){{100,75},{100,75},{1000.0,6000.0},GREEN};
+	crowd[2] = (Mover){{175,125},{175,125},{5000.0,10000.0},YELLOW};
 
 	//This becomes the "real" canvas we draw to.
 	//Normally, ClearBackground is called every frame, but for this project

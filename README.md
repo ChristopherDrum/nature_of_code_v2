@@ -13,7 +13,7 @@ Minimal dependencies with no OOP, containers, complex build systems, or other co
 Builds are generated via dead-simple .bat files.
 
 - `.\build.bat <whatever>.c` to get an executable from that .c file.
-- `.\debug.bat <whatever>.c` to generate .pdb files and launch into RemedyBG.
+- `.\debug.bat <whatever>.c` to generate .pdb files and launch into RemedyBG.d
 
 ## Current Tools
 - VSCode for editing

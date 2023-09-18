@@ -8,6 +8,8 @@
 #include <math.h>
 #include <external/stb_perlin.h>
 
+#define TWOPI 6.28318530717958647692f;
+
 float _clamp(float value, float min, float max)
 {
 	if (value < min) return min;
@@ -77,3 +79,18 @@ void setMag2D(Vector2 *vec, float len)
 	*vec = Vector2Normalize(*vec);
 	mult2D(vec, len);
 }
+
+Vector2 Vector2Unit(void)
+{
+	return (Vector2){1.0f, 0.0f};
+}
+
+//Raylib-aligned function name
+Vector2 Vector2Random(void)
+{
+	//start with a unit vector at angle 0, then rotate it by a random angle
+	float randomAngle = randf(1)*TWOPI;
+	return Vector2Rotate(Vector2Unit(), randomAngle);
+}
+//P5.js-aligned function name
+Vector2 random2D(void) {  return Vector2Random();  }

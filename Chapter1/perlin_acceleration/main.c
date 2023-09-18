@@ -16,6 +16,7 @@ typedef struct Mover {
 	Vector2 position;
 	Vector2 velocity;
 	Vector2 acceleration;
+	Vector2 timeStep;
 	float topSpeed;
 	Color c;
 } Mover;
@@ -24,21 +25,28 @@ Mover make(Color c)
 {
 	Vector2 pos = {(float)virtualWidth/2, (float)virtualHeight/2};
 	Vector2 vel = Vector2Zero();
-	Vector2 acc = Vector2Random();
-	float   top = 5.0f;
+	Vector2 acc = Vector2Zero();
+	Vector2 time = (Vector2){randf(10000.0f), randf(10000.0f)};
+	float   top = 3.0f;
 	if (c.a == 0) c = DARKGREEN;
-	Mover m = {pos, vel, acc, top, c};
+	Mover m = {pos, vel, acc, time, top, c};
 	return m;
 }
 
 void update(Mover *m)
 {
-	Vector2 acc = Vector2Random();
-	m->acceleration = Vector2Scale(acc, randf(1.3f));
+	float nx = noise(m->timeStep.x, 0, 0);
+	float ny = noise(0, m->timeStep.x, 0);
 	
+	Vector2 acc = (Vector2){nx, ny};
+	m->acceleration = Vector2Scale(acc, randf(1.4f));
+
 	m->velocity = Vector2Add(m->velocity, m->acceleration);
 	m->velocity = Vector2ClampValue(m->velocity, 0.0f, m->topSpeed);
 	m->position = Vector2Add(m->position, m->velocity);
+
+	m->timeStep.x += 0.05;
+	m->timeStep.y += 0.05;
 }
 
 void show(Mover *m)
@@ -69,7 +77,7 @@ int main(void)
     //----------------------------------------------------------------
 
     InitWindow(screenWidth, screenHeight,
-		"Nature of Code, Ch.1 Ex.9, Motion 101 (Velocity and Random Acceleration)");
+		"Nature of Code, Chapter 1 - Exercise 6 : Perlin Acceleration");
 
     SetTargetFPS(60);
 

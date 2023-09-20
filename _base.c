@@ -12,8 +12,11 @@ const int resolutionScale = 2;
 const int screenWidth = virtualWidth * resolutionScale;
 const int screenHeight = virtualHeight * resolutionScale;
 
+const float widthRatio = (float)virtualWidth/screenWidth;
+const float heightRatio = (float)virtualHeight/screenHeight;
 
-int main() 
+
+int main(void) 
 {
     // Initialization
     //----------------------------------------------------------------
@@ -31,6 +34,10 @@ int main()
 	//BeginDrawing()/EndDrawing() phase without (necessarily) needing to clear 
 	RenderTexture2D virtualScreen = LoadRenderTexture(virtualWidth, virtualHeight);
 
+	//Make sure we get relative pixel coordinates during low-res renders
+	SetMouseScale(widthRatio, heightRatio);
+
+	//Maybe not strictly necessary; wipe the screen before persistent drawing occurs. Ignore this if you need per-frame wipes.
 	BeginTextureMode(virtualScreen);
 	ClearBackground(DARKGRAY);
 	EndTextureMode();

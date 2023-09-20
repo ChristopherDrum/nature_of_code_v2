@@ -94,3 +94,10 @@ Vector2 Vector2Random(void)
 }
 //P5.js-aligned function name
 Vector2 random2D(void) {  return Vector2Random();  }
+
+Vector2 Vector2SetLength(Vector2 v, float len)
+{
+	Vector2 newVec = Vector2Normalize(v);
+	newVec = Vector2Scale(newVec, len);
+	return newVec;
+}
